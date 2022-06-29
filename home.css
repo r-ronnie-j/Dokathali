@@ -1,0 +1,151 @@
+@keyframes alignAnimation {
+    from{opacity: 100%;transform:translate(0,0)}
+    50%{opacity: 50%;transform: translate(-50%,0);}
+    to{opacity:0%;transform: translate(-100%,0);}
+}
+
+@keyframes alignAnimationR {
+    from{opacity: 0%;transform:translate(-100%,0)}
+    50%{opacity: 50%;transform:translate(-50%,0)}
+    to{opacity:100%;transform:translate(0%,0)}
+}
+@keyframes alignXAnimation{
+    from{
+        background-color: antiquewhite;
+        border:""
+    }
+    to{
+        background-color: rgb(181, 232, 215);
+        border:'1px solid black';
+    }
+}
+@keyframes alignXAnimationR{
+    to{
+        background-color: antiquewhite;
+        border:""
+    }
+    from{
+        background-color: rgb(181, 232, 215);
+        border:'1px solid black';
+    }
+}
+@keyframes formAnimation0{
+    from{transform:translate(0,0)}
+    to{transform: translate(-25%,0)}
+}
+@keyframes formAnimationR0{
+    to{transform:translate(0,0)}
+    from{transform: translate(-25%,0)}
+}
+@keyframes formAnimation1 {
+    from{transform:translate(-25%,0)}
+    to{transform: translate(-50%,0)}
+}
+@keyframes formAnimationR1 {
+    to{transform:translate(-25%,0)}
+    from{transform: translate(-50%,0)}
+}
+@keyframes formAnimation2{
+    from{transform:translate(-50%,0)}
+    to{transform: translate(-75%,0)}
+}
+@keyframes formAnimationR2{
+    to{transform:translate(-50%,0)}
+    from{transform: translate(-75%,0)}
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Slabo 27px', serif;
+    height: 100vh;
+    background-color:antiquewhite;
+    overflow: hidden;
+}
+
+/*nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    min-height: 40px;
+    height: 5vh;
+    background-color: rgb(234, 211, 122);
+}
+
+nav>div {
+    display: flex;
+    margin: 0 1.5vw;
+    flex-direction: column;
+    justify-content: center;
+}*/
+
+.sidebar {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.align {
+    background-color: rgb(192, 234, 130);
+    width: 20%;
+    max-width: 300px;
+    min-width: 220px;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+    font-size: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    z-index:100;
+}
+
+.align-x {
+    display: none;
+    animation-name:display,displayX;
+    animation-duration: 0.5s;
+    animation-timing-function:ease-out;
+    margin: 0 1.5vw;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+.center {
+    text-align: center;
+}
+.mainForm{
+    display: flex;
+    flex-direction:column;
+    flex:570px 1 1;
+}
+.page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height:40px;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor:pointer;
+    margin:10px 0;
+}
+.page div{
+    padding:0 10px;
+}
+
+.formPage{
+    display: flex;
+    height:80%;
+    width:400%;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+.page1,.page2,.page3,.page4{
+    height:100%;
+    width:25%;
+}
+.page2{
+    background-color: bisque;
+}
+
+.page4{
+    overflow-y: scroll;
+}
