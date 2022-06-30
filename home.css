@@ -59,20 +59,14 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-family: 'Slabo 27px', serif;
     height: 100vh;
-    background-color:antiquewhite;
+    background-color:bisque;
     overflow: hidden;
 }
 
-/*nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    min-height: 40px;
-    height: 5vh;
-    background-color: rgb(234, 211, 122);
+nav {
+    color:white;
 }
-
+/*
 nav>div {
     display: flex;
     margin: 0 1.5vw;
@@ -87,7 +81,7 @@ nav>div {
 }
 
 .align {
-    background-color: rgb(192, 234, 130);
+    background-color: rgb(169, 235, 192);
     width: 20%;
     max-width: 300px;
     min-width: 220px;
@@ -127,12 +121,12 @@ nav>div {
     margin:10px 0;
 }
 .page div{
-    padding:0 10px;
+    padding:13px 10px;
 }
 
 .formPage{
     display: flex;
-    height:80%;
+    height:85%;
     width:400%;
     animation-duration: 0.5s;
     animation-timing-function: ease-in;
@@ -141,11 +135,19 @@ nav>div {
 .page1,.page2,.page3,.page4{
     height:100%;
     width:25%;
-}
-.page2{
-    background-color: bisque;
+    overflow-y:scroll;
+    border-bottom:2px solid rgba(0, 0, 0, 0.24);
 }
 
 .page4{
     overflow-y: scroll;
+}
+
+.vertical-center{
+    display: flex;
+    align-items: center;
+}
+#page2hidden,#page3hidden{
+    display: none;
+    color:red;
 }

@@ -17,10 +17,15 @@
     <title>Online account Opening</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm bg-light">
+<body class="bg-light">
+    <nav class="navbar navbar-expand-sm bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Dokathali</a>
+            <div>
+                <div class="vertical-center">
+                    <img src="./Images/290204382_2812249089071375_1719346231146318474_n.png" width="30px">
+                    <span ><a class="navbar-brand text-light" href="https://lamapratik.ninja/wp/">Dokathali</a></span>
+                </div>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -29,7 +34,7 @@
         </div>
     </nav>
     <div class="center">
-        <h1>Dokathali co-operative</h1>
+
     </div>
     <div class="sidebar">
         <div class="align">
@@ -64,16 +69,21 @@
                             <div class="row">
                                 <div class="col-sm container-fluid">
                                     <div class="mb-3 row">
-                                        <div class="col"><span class="input-group-text" id="basic-addon1">Are you a citizen of Nepal </span></div>
-                                        <div class="col vetical-center pt-2"><input type="checkbox" height="40px" width="40px"></input></div>
+                                        <div class="col"><span class="input-group-text" id="basic-addon1">Are you a
+                                                citizen of Nepal </span></div>
+                                        <div class="col vetical-center pt-2"><input type="checkbox" height="40px"
+                                                width="40px" id="citizen"></input></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm container-fluid">
                                     <div class="mb-3 row">
-                                        <div class="col"><span class="input-group-text" id="basic-addon1">Are you a minor(age<16 years) </span></div>
-                                        <div class="col vetical-center pt-2"><input type="checkbox" height="40px" width="40px"></input></div>
+                                        <div class="col"><span class="input-group-text" id="basic-addon1">Are you a
+                                                minor(age<16 years) </span>
+                                        </div>
+                                        <div class="col vetical-center pt-2"><input type="checkbox" height="40px"
+                                                width="40px" id="minor"></input></div>
                                     </div>
                                 </div>
                             </div>
@@ -88,14 +98,14 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">First Name</span>
                                         <input type="text" class="form-control" placeholder="first name"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" required id="namefirst">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Middle Name</span>
                                         <input type="text" class="form-control" placeholder="middle name"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" required id="namemiddle">
                                     </div>
                                 </div>
                             </div>
@@ -104,16 +114,16 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Last Name</span>
                                         <input type="text" class="form-control" placeholder="last name"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" required id="namelast">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <select class="form-select form-select-lg mb-3"
-                                        aria-label=".form-select-lg example">
-                                        <option selected>Gender</option>
-                                        <option value="1">Male</option>
-                                        <option value="2">Female</option>
-                                        <option value="3">Others</option>
+                                        aria-label=".form-select-lg example" required id="gender">
+                                        <option selected value="">Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Others">Others</option>
                                     </select>
                                 </div>
                             </div>
@@ -122,14 +132,14 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Nationality</span>
                                         <input type="text" class="form-control" placeholder="Nepali"
-                                            aria-label="Username" aria-describedby="basic-addon1" value="Nepali">
+                                            aria-label="Username" aria-describedby="basic-addon1" value="Nepali" id="nationality">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Date of birth</span>
                                         <input type="date" class="form-control" placeholder="Nepali"
-                                            aria-label="Username" aria-describedby="basic-addon1" value="Nepali">
+                                            aria-label="Username" aria-describedby="basic-addon1" value="Nepali" id="dateOfBirth">
                                     </div>
                                 </div>
                             </div>
@@ -143,14 +153,14 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Father's Name</span>
                                         <input type="text" class="form-control" placeholder="father's name"
-                                            aria-label="father's name" aria-describedby="basic-addon1">
+                                            aria-label="father's name" aria-describedby="basic-addon1" id="fatherName">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Mother's Name</span>
                                         <input type="text" class="form-control" placeholder="mother's name"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="motherName">
                                     </div>
                                 </div>
                             </div>
@@ -159,14 +169,14 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Grandfather's name</span>
                                         <input type="text" class="form-control" placeholder="grandfather's name"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="grandfatherName">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Spouce's Name</span>
                                         <input type="text" class="form-control" placeholder="spouce's name"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="spouceName">
                                     </div>
                                 </div>
                             </div>
@@ -175,10 +185,13 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Occupation</span>
                                         <input type="text" class="form-control" placeholder="Occupation"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="occupation">
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div id="page2hidden">
+                            first name ,last name,gender,nationality,date of birth, father's name , grandfather's name, mother's name, occupation are required field
                         </div>
                     </form>
                 </div>
@@ -192,9 +205,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm">
-                                    <select id="province" class="form-select form-select-lg mb-3"
+                                    <select id="Per-province" class="form-select form-select-lg mb-3"
                                         aria-label=".form-select-lg example">
-                                        <option selected>Province</option>
+                                        <option selected value="">Province</option>
                                         <option value="1">Arun Kshetra</option>
                                         <option value="2">Janakpur Kshetra</option>
                                         <option value="3">Kathmandu Kshetra</option>
@@ -205,23 +218,9 @@
                                     </select>
                                 </div>
                                 <div class="col-sm">
-                                    <select id="district" class="form-select form-select-lg mb-3"
-                                        aria-label=".form-select-lg example">
-                                        <option selected>District</option>
-                                        <option value=Bhojpur>Bhojpur</option>
-                                        <option value=Dhankuta>Dhankuta</option>
-                                        <option value=Ilam>Ilam</option>
-                                        <option value=Jhapa>Jhapa</option>
-                                        <option value=Khotang>Khotang</option>
-                                        <option value=Morang>Morang</option>
-                                        <option value=Okhaldhunga>Okhaldhunga</option>
-                                        <option value=Panchthar>Panchthar</option>
-                                        <option value=Sankhuwasabha>Sankhuwasabha</option>
-                                        <option value=Solukhumbu>Solukhumbu</option>
-                                        <option value=Sunsari>Sunsari</option>
-                                        <option value=Taplejung>Taplejung</option>
-                                        <option value=Terhathum>Terhathum</option>
-                                        <option value=Udayapur>Udayapur</option>
+                                    <select id="Per-district" class="form-select form-select-lg mb-3"
+                                        aria-label=".form-select-lg example" id="district">
+                                        <option selected value="">District</option>
                                     </select>
                                 </div>
                             </div>
@@ -230,16 +229,16 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Ward No</span>
                                         <input type="text" class="form-control" placeholder="ward number"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="Per-ward">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Tole</span>
                                         <input type="text" class="form-control" placeholder="tole or street/path name"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="Per-tole">
                                     </div>
-                                </div>                              
+                                </div>
                             </div>
                         </div>
                         <div class="m-3"><br></div>
@@ -253,9 +252,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm">
-                                    <select id="province" class="form-select form-select-lg mb-3"
+                                    <select id="Temp-province" class="form-select form-select-lg mb-3"
                                         aria-label=".form-select-lg example">
-                                        <option selected>Province</option>
+                                        <option selected value="">Province</option>
                                         <option value="1">Arun Kshetra</option>
                                         <option value="2">Janakpur Kshetra</option>
                                         <option value="3">Kathmandu Kshetra</option>
@@ -266,23 +265,9 @@
                                     </select>
                                 </div>
                                 <div class="col-sm">
-                                    <select id="district" class="form-select form-select-lg mb-3"
+                                    <select id="Temp-district" class="form-select form-select-lg mb-3"
                                         aria-label=".form-select-lg example">
-                                        <option selected>District</option>
-                                        <option value=Bhojpur>Bhojpur</option>
-                                        <option value=Dhankuta>Dhankuta</option>
-                                        <option value=Ilam>Ilam</option>
-                                        <option value=Jhapa>Jhapa</option>
-                                        <option value=Khotang>Khotang</option>
-                                        <option value=Morang>Morang</option>
-                                        <option value=Okhaldhunga>Okhaldhunga</option>
-                                        <option value=Panchthar>Panchthar</option>
-                                        <option value=Sankhuwasabha>Sankhuwasabha</option>
-                                        <option value=Solukhumbu>Solukhumbu</option>
-                                        <option value=Sunsari>Sunsari</option>
-                                        <option value=Taplejung>Taplejung</option>
-                                        <option value=Terhathum>Terhathum</option>
-                                        <option value=Udayapur>Udayapur</option>
+                                        <option selected value="">District</option>
                                     </select>
                                 </div>
                             </div>
@@ -291,16 +276,16 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Ward No</span>
                                         <input type="text" class="form-control" placeholder="ward number"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="Temp-ward">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Tole</span>
                                         <input type="text" class="form-control" placeholder="tole or street/path name"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="Temp-tole">
                                     </div>
-                                </div>                              
+                                </div>
                             </div>
                         </div>
                         <div class="m-3"><br></div>
@@ -312,27 +297,30 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Contact Number 1</span>
                                         <input type="text" class="form-control" placeholder="contact number"
-                                            aria-label="Username" aria-describedby="basic-addon1">
+                                            aria-label="Username" aria-describedby="basic-addon1" id="contact1">
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Contact Number 2</span>
                                         <input type="text" class="form-control" placeholder="(optional)"
-                                            aria-label="Username" aria-describedby="basic-addon1" >
+                                            aria-label="Username" aria-describedby="basic-addon1" id="contact2">
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Email address</span>
                                         <input type="text" class="form-control" placeholder="Email address(optional)"
-                                            aria-label="father's name" aria-describedby="basic-addon1">
+                                            aria-label="father's name" aria-describedby="basic-addon1" id="email">
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div id="page3hidden">
+                            permanent address and contact number1 are required field
                         </div>
                     </form>
                 </div>
@@ -351,7 +339,8 @@
                                         <input type="file" accept="image/*" id="Photo">
                                     </div>
                                 </div>
-                            </div><hr>
+                            </div>
+                            <hr>
                             <div class="row">
                                 <div class="col-sm-6 mt-3">
                                     <div class="align-items-center" style="height:100%">Citizenship front side</div>
@@ -364,7 +353,8 @@
                                         <input type="file" accept="image/*" id="Photo">
                                     </div>
                                 </div>
-                            </div><hr>
+                            </div>
+                            <hr>
                             <div class="row pb-3">
                                 <div class="col-sm-6 mt-3">
                                     <div class="align-items-center" style="height:100%">Citizenship Backside</div>
