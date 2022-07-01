@@ -14,18 +14,18 @@ let state = 0;
 document.addEventListener('DOMContentLoaded', (event) => {
     if (navigator.userAgentData.mobile) {
         align.style.display = "none";
-    } else if (window.innerWidth < 576) {
+    } else if (window.innerWidth < 960) {
         align.style.display = "none";
     }
 })
 window.addEventListener('resize', (event) => {
-    if (window.innerWidth < 576) {
+    if (window.innerWidth < 960) {
         align.style.animationName = "alignAnimation";
         align.addEventListener('animationend', () => {
             align.style.display = "none";
             align.animationName = "";
         })
-    } else if (window.innerWidth > 576) {
+    } else if (window.innerWidth > 960) {
         align.style.display = "block";
         align.style.animationName = "alignAnimationR";
         align.addEventListener('animationend', (event) => {
@@ -203,7 +203,7 @@ next.addEventListener('click',(event)=>{
             data.contact[1]= document.querySelector('#contact2').value
             data.email= document.querySelector("#email").value;
             if(data.name.first==''||data.name.last==''||data.gender==''||data.dateOfBirth==''||data.fatherName==''||data.motherName==''||data.occupation==''){
-                next.innerHTML=' <div id="next">Next >></div>'
+                next.innerHTML='<button type="button" class="btn btn-success" id="Submit">Next</button>'
                 let page2hidden = document.querySelector('#page2hidden');
                 page2hidden.style.display = 'block';
                 while(formState > 0) {
@@ -220,7 +220,7 @@ next.addEventListener('click',(event)=>{
                 }
             }
             else if(data.permanent.province==''||data.permanent.district==''||data.permanent.ward==''||data.permanent.tole==''||!checkContact(data.contact[0])){
-                next.innerHTML=' <div id="next">Next >></div>'
+                next.innerHTML='<button type="button" class="btn btn-success" id="Submit">Next</button>'
                 let page3hidden = document.querySelector('#page2hidden');
                 page3hidden.style.display = 'block';
                 while(formState > 1) {
@@ -243,6 +243,7 @@ next.addEventListener('click',(event)=>{
 })
 previous.addEventListener('click',(event)=>{
     if(formState != 3){
-        next.innerHTML=' <div id="next">Next >></div>'
+        next.innerHTML='<button type="button" class="btn btn-success" id="Submit">Next</button>'
     }
 })
+
