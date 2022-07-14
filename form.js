@@ -9,6 +9,7 @@ function checkContact(n){
     }
     return true;
 }
+let data={};
 let align = document.querySelector('.align');
 let bttn = document.querySelector('button.navbar-toggler');
 let state = 0;
@@ -180,14 +181,13 @@ photo2.addEventListener('change',(event)=>{
     data.photo2= event.target.files[0];
 })
 
-
+let readyTosend = false;
 next.addEventListener('click',async (event)=>{
     if(formState == 3){
         next.innerHTML='<button type="button" class="btn btn-primary id="Submit">Submit</button>'
         let submit = next.children[0];
         console.log(submit.nodeName);
         submit.addEventListener('click',(event)=>{
-            let data={};
             data.citizen = document.querySelector('#citizen').checked
             data.minor = document.querySelector('#minor').checked;
             //first page
@@ -252,61 +252,55 @@ next.addEventListener('click',async (event)=>{
                         align.children[0].children[formState].children[0].classList.add('text-primary')
                     })
                 }
+            }else{
+                console.log(data.dateOfBirth);
+                let idata =new Date(data.dateOfBirth);
+                console.log(idata);
+                let status = fetch(requestpath,{
+                    method :'POST',
+                    headers:{
+                        'Contetnt-Type':"application/json",
+                    },
+                    body:JSON.stringify({
+                        is_citizen:data.citizen,
+                        is_minor:data.minor,
+                        first_name:data.name.first,
+                        middle_name:data.name.middle,
+                        last_name:data.name.last,
+                        gender:data.gender,
+                        nationality:data.nationality,
+                        dob:`${idata.getFullYear}/${idata.getMonth}/${idata.getDate}`,
+                        fathers_name:data.fatherName,
+                        motheres_name:data.motherName,
+                        grandfathers_name:data.grandfatherName,
+                        spouce_name:data.spouceName,
+                        occupation:data.occupation,
+                        province_p:data.permanent.province,
+                        district_p:data.permanent.district,
+                        ward_no_p:data.permanent.ward,
+                        tole_p:data.permanent.tole,
+                        province_t:data.temporary.province,
+                        district_t:data.temporary.district,
+                        ward_no_t:data.temporary.ward,
+                        tole_t:data.temporary.tole,
+                        contact_num1:data.contact[0],
+                        contact_num2:data.contact[1],
+                        email:data.email,
+                        photo:data.photo,
+                        citizen_front:data.photo1,
+                        citizen_back:data.photo2
+                    })
+                })
             }
-            console.log(data.dateOfBirth);
-            let idata =new Date(data.dateOfBirth);
-            
-            console.log(idata);
 
 
             ///This is the portion we send the post request
-            let Result = await fetch(requestpath,{
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json',
-                },
-                body:JSON.stringify({
-                    is_citizen:data.citizen,
-                    is_minor:data.minor,
-                    first_name:data.name.first,
-                    middle_name:data.name.middle,
-                    last_name :data.name.last,
-                    gender:data.gender,
-                    nationality:data.nationality,
-                    dod:`${idata.getYear()}/${idata.getMonth()}/${idata.getDate()}`,
-                    fathers_name:data.fatherName,
-                    mothers_name:data.motherName,
-                    grandfathers_name:data.grandfatherName,
-                    spouce_name:data.spouceName,
-                    occupation:data.occupation,
-                    province_p:data.permanent.province,
-                    district_p:data.permanent.district,
-                    ward_p:data.permanent.ward,
-                    tole_p:data.permanent.tole,
-                    province_t:data.temporary.province,
-                    district_t:data.temporary.district,
-                    ward_t:data.temporary.ward,
-                    tole_t:data.temporary.tole,
-                    contact_num1:data.contact[0],
-                    contact_num2:data.contact[1],
-                    email:data.email,
-                    photo:data.photo,
-                    citizen_front:data.photo1,
-                    citizen_back:data.photo2,
-                })
-            })
-            Result =await Result.json();
-            if(Result.status){
-                let si = document.querySelector('#success_info');
-                si.style.display= 'block';
-                si.style.color = 'green';
-                setTimeout(()=>{
-                    window.location="https://lamapratik.ninja/wp/"
-                })
-            }
+            
+           
         })
     }
 })
+
 previous.addEventListener('click',(event)=>{
     if(formState != 3){
         next.innerHTML='<button type="button" class="btn btn-success" id="Submit">Next</button>'
