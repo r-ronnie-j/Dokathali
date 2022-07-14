@@ -1,3 +1,4 @@
+const requestpath = "https://localhost:3000/create";
 function checkContact(n){
     n = n.toString();
     if(n.length<10){
@@ -159,12 +160,28 @@ perProvince.addEventListener('change',(event)=>{
 
 let photo = document.querySelector('#Photo');
 let photoImg = document.querySelector('#Photo-img');
+let photo1 = document.querySelector('#Photo1');
+let photoImg1=document.querySelector('#Photo-img1');
+let photo2 = document.querySelector('#Photo2');
+let photoImg2 = document.querySelector('#Photo-img2');
 photo.addEventListener('change',(event)=>{
     console.log("IS this event fired at  any place");
     photoImg.src = URL.createObjectURL(event.target.files[0]);
+    data.photo= event.target.files[0];
+})
+photo1.addEventListener('change',(event)=>{
+    console.log("IS this event fired at  any place");
+    photoImg1.src = URL.createObjectURL(event.target.files[0]);
+    data.photo1= event.target.files[0];
+})
+photo2.addEventListener('change',(event)=>{
+    console.log("IS this event fired at  any place");
+    photoImg2.src = URL.createObjectURL(event.target.files[0]);
+    data.photo2= event.target.files[0];
 })
 
-next.addEventListener('click',(event)=>{
+
+next.addEventListener('click',async (event)=>{
     if(formState == 3){
         next.innerHTML='<button type="button" class="btn btn-primary id="Submit">Submit</button>'
         let submit = next.children[0];
@@ -236,8 +253,57 @@ next.addEventListener('click',(event)=>{
                     })
                 }
             }
-            //third page
-            console.log(data);
+            let idata =new Date(data.dateOfBirth);
+            console.log(idata);
+            
+
+
+
+            ///This is the portion we send the post request
+            let Result = await fetch(requestpath,{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                },
+                body:JSON.stringify({
+                    is_citizen:data.citizen,
+                    is_minor:data.minor,
+                    first_name:data.name.first,
+                    middle_name:data.name.middle,
+                    last_name :data.name.last,
+                    gender:data.gender,
+                    nationality:data.nationality,
+                    dod:`${idata.getYear()}/${idata.getMonth()}/${idata.getDate()}`,
+                    fathers_name:data.fatherName,
+                    mothers_name:data.motherName,
+                    grandfathers_name:data.grandfatherName,
+                    spouce_name:data.spouceName,
+                    occupation:data.occupation,
+                    province_p:data.permanent.province,
+                    district_p:data.permanent.district,
+                    ward_p:data.permanent.ward,
+                    tole_p:data.permanent.tole,
+                    province_t:data.temporary.province,
+                    district_t:data.temporary.district,
+                    ward_t:data.temporary.ward,
+                    tole_t:data.temporary.tole,
+                    contact_num1:data.contact[0],
+                    contact_num2:data.contact[1],
+                    email:data.email,
+                    photo:data.photo,
+                    citizen_front:data.photo1,
+                    citizen_back:data.photo2,
+                })
+            })
+            Result =await Result.json();
+            if(Result.status){
+                let si = document.querySelector('#success_info');
+                si.style.display= 'block';
+                si.style.color = 'green';
+                setTimeout(()=>{
+                    window.location="https://lamapratik.ninja/wp/"
+                })
+            }
         })
     }
 })

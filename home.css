@@ -175,3 +175,6 @@ nav>div {
         display: flex;
     }
 }
+#success_info{
+    display: none;
+}
