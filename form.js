@@ -124,7 +124,7 @@ perProvince.addEventListener('change',(event)=>{
 })
 let tempProvince = document.querySelector('#Temp-province');
 let tempDistrict  =document.querySelector('#Temp-district');
-perProvince.addEventListener('change',(event)=>{
+tempProvince.addEventListener('change',(event)=>{
     let value= parseInt(event.target.value);
     switch(value){
         case  1:{
@@ -253,10 +253,10 @@ next.addEventListener('click',async (event)=>{
                     })
                 }
             }
+            console.log(data.dateOfBirth);
             let idata =new Date(data.dateOfBirth);
-            console.log(idata);
             
-
+            console.log(idata);
 
 
             ///This is the portion we send the post request
