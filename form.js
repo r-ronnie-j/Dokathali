@@ -66,7 +66,7 @@ previous.addEventListener('click', (event) => {
         formPage.style.transform=`translate(-${(formState)*25}%,0)`
         formPage.addEventListener('animationend',(event)=>{
             formPage.style.animationName='';
-            align.children[0].children[formState+1].children[0].classList.remove('text-primary')
+            align?.children[0]?.children[formState+1]?.children[0]?.classList.remove('text-primary')
             align.children[0].children[formState+1].children[0].classList.add('text-secondary')
             align.children[0].children[formState].children[0].classList.remove('text-secondary')
             align.children[0].children[formState].children[0].classList.add('text-primary')
@@ -253,6 +253,12 @@ next.addEventListener('click',async (event)=>{
                     })
                 }
             }else{
+                const getCookie = (name) => {
+                    return document.cookie.split('; ').reduce((r, v) => {
+                      const parts = v.split('=')
+                      return parts[0] === name ? decodeURIComponent(parts[1]) : r
+                    }, '')
+                }
                 const csrftoken = getCookie('csrftoken');
                 let status = fetch(requestpath,{
                     method :'POST',
