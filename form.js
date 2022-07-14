@@ -253,13 +253,11 @@ next.addEventListener('click',async (event)=>{
                     })
                 }
             }else{
-                console.log(data.dateOfBirth);
-                let idata =new Date(data.dateOfBirth);
-                console.log(idata);
+                const csrftoken = getCookie('csrftoken');
                 let status = fetch(requestpath,{
                     method :'POST',
                     headers:{
-                        'Contetnt-Type':"application/json",
+                        "X-CSRFToken":csrftoken,
                     },
                     body:JSON.stringify({
                         is_citizen:data.citizen,
@@ -269,7 +267,7 @@ next.addEventListener('click',async (event)=>{
                         last_name:data.name.last,
                         gender:data.gender,
                         nationality:data.nationality,
-                        dob:`${idata.getFullYear}/${idata.getMonth}/${idata.getDate}`,
+                        dob:data.dateOfBirth.replaceAll('-','/'),
                         fathers_name:data.fatherName,
                         motheres_name:data.motherName,
                         grandfathers_name:data.grandfatherName,
@@ -291,6 +289,15 @@ next.addEventListener('click',async (event)=>{
                         citizen_back:data.photo2
                     })
                 })
+                status = await status.json();
+                let success_info = document.querySelector('#success_info');
+                success_info.style.color='green';
+                success_info.style.display='block';
+                if(status.status){
+                    setTimeout(()=>{
+                        window.location="https://lamapratik.ninja/wp/";
+                    },2000)
+                }
             }
 
 
