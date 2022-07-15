@@ -66,10 +66,10 @@ previous.addEventListener('click', (event) => {
         formPage.style.transform=`translate(-${(formState)*25}%,0)`
         formPage.addEventListener('animationend',(event)=>{
             formPage.style.animationName='';
-            align?.children[0]?.children[formState+1]?.children[0]?.classList.remove('text-primary')
-            align.children[0].children[formState+1].children[0].classList.add('text-secondary')
-            align.children[0].children[formState].children[0].classList.remove('text-secondary')
-            align.children[0].children[formState].children[0].classList.add('text-primary')
+            align?.children[0]?.children[formState+1]?.children[0]?.classList?.remove('text-primary')
+            align?.children[0]?.children[formState+1]?.children[0]?.classList?.add('text-secondary')
+            align?.children[0]?.children[formState]?.children[0]?.classList?.remove('text-secondary')
+            align?.children[0]?.children[formState]?.children[0]?.classList?.add('text-primary')
         })
     }
 })
@@ -179,6 +179,7 @@ photo2.addEventListener('change',(event)=>{
     console.log("IS this event fired at  any place");
     photoImg2.src = URL.createObjectURL(event.target.files[0]);
     data.photo2= event.target.files[0];
+    console.log(data.photo2)
 })
 
 let readyTosend = false;
@@ -187,7 +188,7 @@ next.addEventListener('click',async (event)=>{
         next.innerHTML='<button type="button" class="btn btn-primary id="Submit">Submit</button>'
         let submit = next.children[0];
         console.log(submit.nodeName);
-        submit.addEventListener('click',(event)=>{
+        submit.addEventListener('click',async (event)=>{
             data.citizen = document.querySelector('#citizen').checked
             data.minor = document.querySelector('#minor').checked;
             //first page
@@ -229,10 +230,10 @@ next.addEventListener('click',async (event)=>{
                     formPage.style.transform=`translate(-${(formState)*25}%,0)`
                     formPage.addEventListener('animationend',(event)=>{
                         formPage.style.animationName='';
-                        align.children[0].children[formState+1].children[0].classList.remove('text-primary')
-                        align.children[0].children[formState+1].children[0].classList.add('text-secondary')
-                        align.children[0].children[formState].children[0].classList.remove('text-secondary')
-                        align.children[0].children[formState].children[0].classList.add('text-primary')
+                        align?.children[0]?.children[formState+1]?.children[0]?.classList?.remove('text-primary')
+                        align?.children[0]?.children[formState+1]?.children[0]?.classList?.add('text-secondary')
+                        align?.children[0]?.children[formState]?.children[0]?.classList?.remove('text-secondary')
+                        align?.children[0]?.children[formState]?.children[0]?.classList?.add('text-primary')
                     })
                 }
             }
@@ -246,10 +247,10 @@ next.addEventListener('click',async (event)=>{
                     formPage.style.transform=`translate(-${(formState)*25}%,0)`
                     formPage.addEventListener('animationend',(event)=>{
                         formPage.style.animationName='';
-                        align.children[0].children[formState+1].children[0].classList.remove('text-primary')
-                        align.children[0].children[formState+1].children[0].classList.add('text-secondary')
-                        align.children[0].children[formState].children[0].classList.remove('text-secondary')
-                        align.children[0].children[formState].children[0].classList.add('text-primary')
+                        align?.children[0]?.children[formState+1]?.children[0]?.classList?.remove('text-primary')
+                        align?.children[0]?.children[formState+1]?.children[0]?.classList?.add('text-secondary')
+                        align?.children[0]?.children[formState]?.children[0]?.classList?.remove('text-secondary')
+                        align?.children[0]?.children[formState]?.children[0]?.classList?.add('text-primary')
                     })
                 }
             }else{
@@ -260,10 +261,12 @@ next.addEventListener('click',async (event)=>{
                     }, '')
                 }
                 const csrftoken = getCookie('csrftoken');
-                let status = fetch(requestpath,{
+                let status =await fetch(requestpath,{
                     method :'POST',
+                    mode:'cors',
                     headers:{
                         "X-CSRFToken":csrftoken,
+                        "Content-Type":"multipart/form-data"
                     },
                     body:JSON.stringify({
                         is_citizen:data.citizen,
@@ -290,12 +293,21 @@ next.addEventListener('click',async (event)=>{
                         contact_num1:data.contact[0],
                         contact_num2:data.contact[1],
                         email:data.email,
-                        photo:data.photo,
-                        citizen_front:data.photo1,
-                        citizen_back:data.photo2
+                        files:{
+                            photo:data.photo,
+                            citizen_front:data.photo1,
+                            citizen_back:data.photo2
+                        },   
                     })
                 })
+                if(status.status){
+                    setTimeout(()=>{
+                        window.location="https://lamapratik.ninja/wp/";
+                    },2000)
+                }
+                console.log(status);
                 status = await status.json();
+                console.log(status);
                 let success_info = document.querySelector('#success_info');
                 success_info.style.color='green';
                 success_info.style.display='block';
