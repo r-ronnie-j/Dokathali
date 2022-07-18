@@ -168,6 +168,7 @@ let photoImg2 = document.querySelector('#Photo-img2');
 photo.addEventListener('change',(event)=>{
     console.log("IS this event fired at  any place");
     photoImg.src = URL.createObjectURL(event.target.files[0]);
+    console.log(URL.createObjectURL(event.target.files[0]));
     data.photo= event.target.files[0];
 })
 photo1.addEventListener('change',(event)=>{
@@ -262,61 +263,51 @@ next.addEventListener('click',async (event)=>{
                 }
                 const csrftoken = getCookie('csrftoken');
                 const formData = new FormData();
-                formData.append(is_citizen,data.citizen)
-                formData.append(is_minor,data.minor)
-                formData.append(first_name,data.name.first)
-                formData.append(middle_name,data.name.middle)
-                formData.append(last_name,data.name.last)
-                formData.append(gender,data.gender)
-                formData.append(nationality,data.nationality)
-                formData.append(dob,data.dateOfBirth.replaceAll('-','/'))
-                formData.append(fathers_name,data.fatherName)
-                formData.append(motheres_name,data.motherName)
-                formData.append(grandfathers_name,data.grandfatherName)
-                formData.append(spouce_name,data.spouceName)
-                formData.append(occupation,data.occupation)
-                formData.append(province_p,data.permanent.province)
-                formData.append(district_p,data.permanent.district)
-                formData.append(ward_no_p,data.permanent.ward)
-                formData.append(tole_p,data.permanent.tole)
-                formData.append(province_t,data.temporary.province)
-                formData.append(district_t,data.temporary.district)
-                formData.append(ward_no_t,data.temporary.ward)
-                formData.append(tole_t,data.temporary.tole)
-                formData.append(contact_num1,data.contact[0])
-                formData.append(contact_num2,data.contact[1])
-                formData.append(email,data.email)
-                formData.append(photo,data.photo)
-                formData.append(citizen_front,data.photo1)
-                formData.append(citizen_back,data.photo2)
+                formData.append("is_citizen",data.citizen)
+                formData.append("is_minor",data.minor)
+                formData.append("first_name",data.name.first)
+                formData.append("middle_name",data.name.middle)
+                formData.append("last_name",data.name.last)
+                formData.append("gender",data.gender)
+                formData.append("nationality",data.nationality)
+                formData.append("dob",data.dateOfBirth.replaceAll('-','/'))
+                formData.append("fathers_name",data.fatherName)
+                formData.append("motheres_name",data.motherName)
+                formData.append("grandfathers_name",data.grandfatherName)
+                formData.append("spouce_name",data.spouceName)
+                formData.append("occupation",data.occupation)
+                formData.append("province_p",data.permanent.province)
+                formData.append("district_p",data.permanent.district)
+                formData.append("ward_no_p",data.permanent.ward)
+                formData.append("tole_p",data.permanent.tole)
+                formData.append("province_t",data.temporary.province)
+                formData.append("district_t",data.temporary.district)
+                formData.append("ward_no_t",data.temporary.ward)
+                formData.append("tole_t",data.temporary.tole)
+                formData.append("contact_num1",data.contact[0])
+                formData.append("contact_num2",data.contact[1])
+                formData.append("email",data.email)
+                formData.append("photo",data.photo)
+                formData.append("citizen_front",data.photo1)
+                formData.append("citizen_back",data.photo2)
                 let status =await fetch(requestpath,{
                     method :'POST',
                     mode:'cors',
                     headers:{
                         "X-CSRFToken":csrftoken,
-                        "Content-Type":"multipart/form-data"
                     },
                     body:formData
                 })
-                if(status.status){
+                if(status.status >= 200 && status.status < 300 ){
                     setTimeout(()=>{
                         window.location="https://lamapratik.ninja/wp/";
                     },2000)
-                }
-                status = await status.json();
-                let success_info = document.querySelector('#success_info');
-                success_info.style.color='green';
-                success_info.style.display='block';
-                if(status.status){
-                    setTimeout(()=>{
-                        window.location="https://lamapratik.ninja/wp/";
-                    },2000)
+                    let success_info = document.querySelector('#success_info');
+                    success_info.style.color='green';
+                    success_info.style.display='block';
                 }
             }
-
-
             ///This is the portion we send the post request
-            
            
         })
     }
